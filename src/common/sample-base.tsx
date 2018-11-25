@@ -1,0 +1,43 @@
+import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { setResponsiveElement, selectedTheme, removeOverlay } from './index';
+import { setSelectList } from './leftpane';
+import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions,checkApiTableDataSource } from './component-content';
+import { select } from '@syncfusion/ej2-base';
+
+export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<any> & P, S>{
+
+    /**
+     * Custom Render Complete function
+     */
+    public rendereComplete(): void {
+    }
+
+    componentWillReceiveProps() {
+        /**
+         * Theme Change 
+         */
+        let hash: string[] = location.hash.split('/');
+        if (hash[1] !== selectedTheme) {
+            localStorage.setItem('ej2-switch', select('.active', setResponsiveElement).id);
+            location.reload();
+        }
+     
+    }
+
+    componentDidMount(): void {
+        renderDescriptions();
+   
+        onComponentLoad();
+        setNavButtonState();
+        intialLoadScrollTop();
+        setTimeout(()=>{
+         setSelectList();
+         removeOverlay();
+         checkApiTableDataSource();
+         this.rendereComplete();
+        });
+        
+    }
+
+}    

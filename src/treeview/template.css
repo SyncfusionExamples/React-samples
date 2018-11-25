@@ -1,0 +1,20 @@
+    .tree-control-wrapper {
+        max-width: 320px;
+        margin: auto;
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+    }
+    .template-tree.e-treeview .e-list-text {
+        width: 100%;
+    }
+    .template-tree.e-treeview .textcontent {
+        float:left;
+    }
+    .template-tree.e-treeview .countcontainer {
+        margin-right: 5px; 
+        float:right;
+    }
+    .material .treeCount.e-badge {
+        vertical-align: middle;
+    }
+    
